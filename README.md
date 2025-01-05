@@ -1,16 +1,16 @@
-# icecream
+# Ice Cream Shop App 🍦
 
-A new Flutter project.
+Bienvenue dans l'application **IceCream2077** ! Cette application mobile propose une expérience futuriste pour commander des glaces et personnaliser son compte. Développée avec **Flutter**, elle est conçue pour offrir une interface utilisateur intuitive et moderne.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🛠️ Fonctionnalités
 
-A few resources to get you started if this is your first Flutter project:
+- **Accueil** : Découvrez un écran d'accueil immersif et moderne.
+- **Menu** : Explorez le menu des glaces avec des images et descriptions interactives.
+- **Commandes** : Consultez et gérez vos commandes précédentes.
+- **Compte** : Personnalisez votre profil utilisateur.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+L'application est en cours de développement.
