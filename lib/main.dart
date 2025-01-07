@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:icecream/screens/home.dart';
+import 'package:provider/provider.dart';
+import 'package:icecream/screens/loginscreen.dart';
+import 'package:icecream/model/auth_provider.dart';
+import 'package:icecream/model/cart.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (_) => AuthProvider()), // Fournisseur to manage user state
+        ChangeNotifierProvider(
+            create: (_) => Cart()), // Fournisseur to manage cart
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -37,9 +50,7 @@ class _LandingPageState extends State<LandingPage> {
           backgroundColor: Colors.red,
           title: const Text(
             'IceCream 2077',
-            style: TextStyle(
-              color: Colors.white,
-            ),
+            style: TextStyle(color: Colors.white, fontFamily: 'CyberPunk'),
           )),
       body: SingleChildScrollView(
         child: Column(
@@ -60,7 +71,7 @@ class _LandingPageState extends State<LandingPage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return HomePage();
+                        return LoginScreen();
                       },
                     ),
                   );
