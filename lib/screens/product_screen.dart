@@ -125,24 +125,22 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Expanded(
-                    child: ListView.builder(
-                        itemCount: value.getIceCreamList().length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          IceCream icecream = value.getIceCreamList()[index];
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0), // Vertical space between items
-                            child: IceCreamTile(
-                              icecream: icecream,
-                              onTap: () => addIceCreamToCart(icecream),
-                              isMenuPage: true,
-                            ),
-                          );
-                        })),
-              ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ListView.builder(
+                      itemCount: value.getIceCreamList().length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        IceCream icecream = value.getIceCreamList()[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0), // Vertical space between items
+                          child: IceCreamTile(
+                            icecream: icecream,
+                            onTap: () => addIceCreamToCart(icecream),
+                            isMenuPage: true,
+                          ),
+                        );
+                      })),
             ),
           ),
         ],
