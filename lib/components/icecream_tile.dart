@@ -3,16 +3,31 @@ import 'package:icecream/model/ice_cream.dart';
 
 class IceCreamTile extends StatelessWidget {
   IceCream icecream;
-  IceCreamTile({super.key, required this.icecream});
+  void Function()? onTap;
+  IceCreamTile({super.key, required this.icecream, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 25),
-        width: 200,
+        width: 250,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.amber,
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
+              topLeft: Radius.circular(2)),
+          color: Colors.black.withOpacity(0.5), // Fond semi-transparent
+          border: Border.all(
+            color: Colors.cyanAccent, // Bordure lumineuse
+            width: 1.5,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.cyanAccent.withOpacity(0.3),
+              blurRadius: 15,
+              spreadRadius: 5,
+            ),
+          ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,7 +35,18 @@ class IceCreamTile extends StatelessWidget {
             //Ice Cream Name
             Text(
               icecream.name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  fontFamily: 'NeuroPol',
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(0, 5), // Déplacement de l'ombre
+                      blurRadius: 10,
+                      color: Colors.cyanAccent.withOpacity(0.8),
+                    )
+                  ]),
             ),
 
             //IceCream picture
@@ -57,18 +83,19 @@ class IceCreamTile extends StatelessWidget {
                     ],
                   ),
                   //Add to cart button
-                  Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius:
-                              BorderRadius.only(topLeft: Radius.circular(20))),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          )))
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20))),
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        )),
+                  )
                 ],
               ),
             )

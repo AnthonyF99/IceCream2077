@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icecream/screens/cartscreen.dart';
 import 'package:icecream/widgets/product_card.dart';
 import 'package:icecream/widgets/account_settings.dart';
 import 'package:icecream/widgets/home.dart';
@@ -45,25 +46,27 @@ class _NavigationExampleState extends State<NavigationExample> {
         },
         indicatorColor: Colors.amber,
         selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          NavigationDestination(
+        destinations: <Widget>[
+          const NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Badge(child: Icon(Icons.search)),
             label: 'Menu',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.shopping_bag),
-            icon: Badge(
-              label: Text('2'),
-              child: Icon(Icons.shopping_bag_outlined),
+            selectedIcon: const Icon(Icons.shopping_cart),
+            icon: Consumer<Cart>(
+              builder: (context, cart, child) => Badge(
+                label: Text(cart.getUserCart().length.toString()),
+                child: Icon(Icons.shopping_cart_outlined),
+              ),
             ),
-            label: 'Order',
+            label: 'Cart',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(Icons.account_circle),
             icon: Icon(Icons.account_circle_outlined),
             label: 'Account',
@@ -85,12 +88,16 @@ class _NavigationExampleState extends State<NavigationExample> {
                   style: theme.textTheme.titleLarge,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.shopping_cart_outlined),
+                  icon: Consumer<Cart>(
+                    builder: (context, cart, child) => Badge(
+                      label: Text(cart.getUserCart().length.toString()),
+                      child: Icon(Icons.shopping_cart_outlined),
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const CartRoute()),
+                      MaterialPageRoute(builder: (context) => const CartPage()),
                     );
                   },
                 ),
@@ -101,28 +108,9 @@ class _NavigationExampleState extends State<NavigationExample> {
           ),
         ),
 
-        /// Order page
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.notifications_sharp),
-                  title: Text('Order 1'),
-                  subtitle: Text('This is a notification'),
-                ),
-              ),
-              Card(
-                child: ListTile(
-                  leading: Icon(Icons.notifications_sharp),
-                  title: Text('Order 2'),
-                  subtitle: Text('This is a notification'),
-                ),
-              ),
-            ],
-          ),
-        ),
+        /// Cart page
+        const CartPage(),
+
         const Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
@@ -141,51 +129,6 @@ class _NavigationExampleState extends State<NavigationExample> {
           ),
         ),
       ][currentPageIndex],
-    );
-  }
-}
-
-class CartRoute extends StatelessWidget {
-  const CartRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('CART'),
-      ),
-      body: Wrap(
-        children: [
-          Card(
-            child: ListTile(
-              leading: IconButton(
-                icon: const Icon(Icons.cancel_outlined),
-                onPressed: () {},
-              ),
-              title: Text('Product Title 1'),
-              subtitle: Text('Product Description 1'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: IconButton(
-                icon: const Icon(Icons.cancel_outlined),
-                onPressed: () {},
-              ),
-              title: Text('Ex: Vanilla Bean'),
-              subtitle: Text('Vanilla bean, price: 1.00, chocolate topping'),
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Go back!'),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

@@ -4,8 +4,35 @@ import 'package:icecream/model/ice_cream.dart';
 import 'package:icecream/model/cart.dart';
 import 'package:provider/provider.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCardComponent extends StatelessWidget {
+  const ProductCardComponent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const ProductCard();
+  }
+}
+
+class ProductCard extends StatefulWidget {
   const ProductCard({super.key});
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  void addIceCreamToCart(IceCream icecream) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(icecream);
+
+    //Alert the user, iceCream successfully added
+
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text("Succesfully added!"),
+              content: Text('Check your cart'),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,44 +82,42 @@ class ProductCard extends StatelessWidget {
           ),
           // Liste des glaces
           Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xFF1B1B1B),
+                  Color(0xFF311B92),
+                  Color(0xFF00BCD4),
+                ],
+                stops: [
+                  0.2,
+                  0.6,
+                  1.0
+                ], // Contrôle de la transition des couleurs
+              ),
+            ),
             margin: EdgeInsets.only(right: 25), // To center the container
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: SizedBox(
-                  height: 600,
+                  height: 650,
                   child: ListView.builder(
-                      itemCount: 4,
+                      itemCount: value.getIceCreamList().length,
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, index) {
                         IceCream icecream = value.getIceCreamList()[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 8.0), // Vertical space between items
-                          child: IceCreamTile(icecream: icecream),
+                          child: IceCreamTile(
+                            icecream: icecream,
+                            onTap: () => addIceCreamToCart(icecream),
+                          ),
                         );
                       })),
             ),
-          ),
-          const SizedBox(height: 16.0), // Espacement avant le bouton
-          // Bouton en dessous de la liste
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Product name add to cart')),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.yellow[600],
-                      foregroundColor: Colors.black),
-                  child: const Text('Add to Cart'),
-                ),
-              ),
-            ],
           ),
         ],
       ),
