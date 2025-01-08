@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icecream/screens/more_productscreen.dart';
 import 'package:icecream/widgets/icecream_tile.dart';
 import 'package:icecream/model/ice_cream.dart';
 import 'package:provider/provider.dart';
@@ -126,12 +127,23 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ]),
                           ),
                         ),
-                        const Text(
-                          'See more',
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.amberAccent),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    MoreProductScreen(isHotDeals: true),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'See more',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amberAccent),
+                          ),
                         ),
                       ],
                     ),
@@ -192,12 +204,23 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 ]),
                           ),
                         ),
-                        const Text(
-                          'See more',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.amberAccent,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    MoreProductScreen(isHotDeals: false),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'See more',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.amberAccent,
+                            ),
                           ),
                         ),
                       ],
