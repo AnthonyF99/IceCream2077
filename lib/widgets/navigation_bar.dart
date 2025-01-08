@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icecream/screens/cartscreen.dart';
 import 'package:icecream/screens/mapscreen.dart';
-import 'package:icecream/screens/product_card.dart';
+import 'package:icecream/screens/product_screen.dart';
 import 'package:icecream/widgets/account_settings.dart';
 import 'package:icecream/widgets/home.dart';
 import 'package:icecream/model/cart.dart';
