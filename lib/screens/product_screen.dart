@@ -46,6 +46,7 @@ class _ProductCardState extends State<ProductCard> {
                 Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
               Text(
                 'Ice Cream Shop',
+                style: TextStyle(fontSize: 20, fontFamily: 'NeuroPol'),
               ),
               IconButton(
                 icon: Consumer<Cart>(

@@ -26,14 +26,14 @@ class _CartItemState extends State<CartItem> {
             topRight: Radius.circular(15),
             bottomLeft: Radius.circular(15),
             topLeft: Radius.circular(2)),
-        color: Colors.black.withOpacity(0.5), // Fond semi-transparent
+        color: Color.fromRGBO(0, 0, 0, 0.5),
         border: Border.all(
           color: Colors.cyanAccent, // Bordure lumineuse
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.cyanAccent.withOpacity(0.3),
+            color: Color.fromRGBO(0, 255, 255, 0.3),
             blurRadius: 15,
             spreadRadius: 5,
           ),

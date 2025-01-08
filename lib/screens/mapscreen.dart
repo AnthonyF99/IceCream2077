@@ -13,8 +13,8 @@ class OpenMap extends StatelessWidget {
       ),
       body: FlutterMap(
         options: MapOptions(
-          center: LatLng(-20.8661, 55.4500),
-          zoom: 12.0,
+          initialCenter: LatLng(-20.8661, 55.4500),
+          initialZoom: 12.0,
         ),
         children: [
           TileLayer(
