@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icecream/components/cart_item.dart';
+import 'package:icecream/widgets/cart_item.dart';
 import 'package:icecream/model/cart.dart';
 import 'package:icecream/model/ice_cream.dart';
 import 'package:icecream/widgets/navigation_bar.dart';

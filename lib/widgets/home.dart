@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icecream/components/icecream_tile.dart';
+import 'package:icecream/widgets/icecream_tile.dart';
 import 'package:icecream/model/ice_cream.dart';
 import 'package:provider/provider.dart';
 import 'package:icecream/model/cart.dart';
