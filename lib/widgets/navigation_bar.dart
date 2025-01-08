@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icecream/screens/cartscreen.dart';
-import 'package:icecream/widgets/product_card.dart';
+import 'package:icecream/screens/mapscreen.dart';
+import 'package:icecream/screens/product_card.dart';
 import 'package:icecream/widgets/account_settings.dart';
 import 'package:icecream/widgets/home.dart';
 import 'package:icecream/model/cart.dart';
@@ -71,6 +72,11 @@ class _NavigationExampleState extends State<NavigationExample> {
             icon: Icon(Icons.account_circle_outlined),
             label: 'Account',
           ),
+          const NavigationDestination(
+            selectedIcon: Icon(Icons.map_outlined),
+            icon: Icon(Icons.map),
+            label: 'Map',
+          ),
         ],
       ),
       body: <Widget>[
@@ -78,34 +84,7 @@ class _NavigationExampleState extends State<NavigationExample> {
         HomeWidget(),
 
         /// Menu page
-        SizedBox(
-          child: Column(
-            children: <Widget>[
-              Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
-                Text(
-                  'Ice Cream Shop',
-                  style: theme.textTheme.titleLarge,
-                ),
-                IconButton(
-                  icon: Consumer<Cart>(
-                    builder: (context, cart, child) => Badge(
-                      label: Text(cart.getUserCart().length.toString()),
-                      child: Icon(Icons.shopping_cart_outlined),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const CartPage()),
-                    );
-                  },
-                ),
-              ]),
-
-              ProductCard(), // Affichage de ProductCard
-            ],
-          ),
-        ),
+        ProductCard(), // Affichage de ProductCard
 
         /// Cart page
         const CartPage(),
@@ -127,6 +106,7 @@ class _NavigationExampleState extends State<NavigationExample> {
             ],
           ),
         ),
+        const OpenMap()
       ][currentPageIndex],
     );
   }
