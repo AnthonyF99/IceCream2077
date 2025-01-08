@@ -78,8 +78,7 @@ class _NavigationExampleState extends State<NavigationExample> {
         HomeWidget(),
 
         /// Menu page
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        SizedBox(
           child: Column(
             children: <Widget>[
               Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [

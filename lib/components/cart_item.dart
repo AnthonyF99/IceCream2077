@@ -21,14 +21,35 @@ class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Colors.grey[100]),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(15),
+            bottomLeft: Radius.circular(15),
+            topLeft: Radius.circular(2)),
+        color: Colors.black.withOpacity(0.5), // Fond semi-transparent
+        border: Border.all(
+          color: Colors.cyanAccent, // Bordure lumineuse
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.cyanAccent.withOpacity(0.3),
+            blurRadius: 15,
+            spreadRadius: 5,
+          ),
+        ],
+      ),
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
         leading: Image.asset(widget.icecream.imagePath),
         title: Text(widget.icecream.name),
         subtitle: Text(widget.icecream.price),
-        trailing:
-            IconButton(onPressed: removeItemFromCart, icon: Icon(Icons.delete)),
+        textColor: Colors.white,
+        trailing: IconButton(
+          onPressed: removeItemFromCart,
+          icon: Icon(Icons.delete),
+          color: Colors.white,
+        ),
       ),
     );
   }

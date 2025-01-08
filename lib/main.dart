@@ -57,7 +57,8 @@ class _LandingPageState extends State<LandingPage> {
             Center(
               child: Image.network(
                 'https://images.stockcake.com/public/8/2/1/8218586c-99a7-4e47-b95f-572378c12e39/ice-cream-delight-stockcake.jpg',
-                height: 350,
+                height: 500,
+                width: double.infinity,
               ),
             ),
             const Text(
@@ -75,7 +76,21 @@ class _LandingPageState extends State<LandingPage> {
                     ),
                   );
                 },
-                child: const Text('Get Started'))
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+                  backgroundColor: Colors.cyan,
+                  shadowColor: Colors.cyanAccent,
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(color: Colors.cyanAccent)),
+                ),
+                child: const Text('Get Started',
+                    style: TextStyle(
+                      color: Colors.white, // Couleur du texte
+                      fontSize: 16,
+                    )))
           ],
         ),
       ),

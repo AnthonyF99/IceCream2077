@@ -64,10 +64,6 @@ class _LoginState extends State<Login> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: ElevatedButton(
-                  child: Text(
-                    'Log in ',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
-                  ),
                   onPressed: () {
                     // Changer l'état de connexion
                     Provider.of<AuthProvider>(context, listen: false).logIn();
@@ -76,6 +72,20 @@ class _LoginState extends State<Login> {
                       MaterialPageRoute(builder: (context) => HomePage()),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 80, vertical: 10),
+                    backgroundColor: Colors.cyan,
+                    shadowColor: Colors.cyanAccent,
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: BorderSide(color: Colors.cyanAccent)),
+                  ),
+                  child: Text(
+                    'Log in ',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
                 ),
               ),
             ),
@@ -115,7 +125,20 @@ class _LoginState extends State<Login> {
                       MaterialPageRoute(builder: (context) => HomePage()),
                     );
                   },
-                  child: const Text('Continue as guest')),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 80, vertical: 10),
+                    backgroundColor: Colors.cyan,
+                    shadowColor: Colors.cyanAccent,
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: BorderSide(color: Colors.cyanAccent)),
+                  ),
+                  child: const Text(
+                    'Continue as guest',
+                    style: TextStyle(color: Colors.white),
+                  )),
             )
           ],
         ),

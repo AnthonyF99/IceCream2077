@@ -160,6 +160,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           return IceCreamTile(
                             icecream: icecream,
                             onTap: () => addIceCreamToCart(icecream),
+                            isMenuPage: false,
                           ); // Afficher l'élément
                         },
                       ),
@@ -226,6 +227,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           return IceCreamTile(
                             icecream: icecream,
                             onTap: () => addIceCreamToCart(icecream),
+                            isMenuPage: false,
                           );
                         },
                       ),

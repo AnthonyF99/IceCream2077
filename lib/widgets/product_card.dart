@@ -98,11 +98,10 @@ class _ProductCardState extends State<ProductCard> {
                 ], // Contrôle de la transition des couleurs
               ),
             ),
-            margin: EdgeInsets.only(right: 25), // To center the container
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: SizedBox(
-                  height: 650,
+                  height: 700,
                   child: ListView.builder(
                       itemCount: value.getIceCreamList().length,
                       scrollDirection: Axis.vertical,
@@ -114,6 +113,7 @@ class _ProductCardState extends State<ProductCard> {
                           child: IceCreamTile(
                             icecream: icecream,
                             onTap: () => addIceCreamToCart(icecream),
+                            isMenuPage: true,
                           ),
                         );
                       })),

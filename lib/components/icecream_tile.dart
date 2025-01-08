@@ -4,12 +4,17 @@ import 'package:icecream/model/ice_cream.dart';
 class IceCreamTile extends StatelessWidget {
   IceCream icecream;
   void Function()? onTap;
-  IceCreamTile({super.key, required this.icecream, required this.onTap});
+  final bool isMenuPage;
+  IceCreamTile(
+      {super.key,
+      required this.icecream,
+      required this.onTap,
+      required this.isMenuPage});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(left: 25),
+        margin: EdgeInsets.only(left: isMenuPage ? 0 : 25),
         width: 250,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(

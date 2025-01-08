@@ -31,32 +31,49 @@ class CartPage extends StatelessWidget {
           },
         ),
       ),
-      body: Consumer<Cart>(
-        builder: (context, value, child) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //Heading
-              const Text(
-                'My Cart',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                  child: ListView.builder(
-                itemCount: value.getUserCart().length,
-                itemBuilder: (context, index) {
-                  //Get individual iceCream
-                  IceCream individualIceCream = value.getUserCart()[index];
-
-                  //Return the cart item
-                  return CartItem(
-                    icecream: individualIceCream,
-                  );
-                },
-              ))
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF1B1B1B),
+              Color(0xFF311B92),
+              Color(0xFF00BCD4),
             ],
+            stops: [0.2, 0.6, 1.0], // Contrôle de la transition des couleurs
+          ),
+        ),
+        child: Consumer<Cart>(
+          builder: (context, value, child) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //Heading
+                const Text(
+                  'My Cart',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      color: Colors.white),
+                ),
+                const SizedBox(height: 10),
+                Expanded(
+                    child: ListView.builder(
+                  itemCount: value.getUserCart().length,
+                  itemBuilder: (context, index) {
+                    //Get individual iceCream
+                    IceCream individualIceCream = value.getUserCart()[index];
+
+                    //Return the cart item
+                    return CartItem(
+                      icecream: individualIceCream,
+                    );
+                  },
+                ))
+              ],
+            ),
           ),
         ),
       ),
